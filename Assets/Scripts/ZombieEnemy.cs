@@ -59,7 +59,7 @@ public class ZombieEnemy : MonoBehaviour
         if (!TryGetComponent(out health)) health = gameObject.AddComponent<Health>();
         if (render == null) render = GetComponentInChildren<SpriteRenderer>();
 
-        playerMove = FindFirstObjectByType<PlayerMovement>();
+        playerMove = FindAnyObjectByType<PlayerMovement>();
         if (playerMove != null) player = playerMove.transform;
 
         flanker = Random.value < flankChance;
@@ -120,7 +120,7 @@ public class ZombieEnemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (health.Stunned) return; // let knockback play out
+        if (health.Stunned) return;
 
         if (aim == Vector2.zero)
         {

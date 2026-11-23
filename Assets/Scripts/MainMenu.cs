@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
         LevelManager.Levels = levelScenes;
         LevelManager.MenuScene = mainMenuScene;
 
-        foreach (Button b in FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        foreach (Button b in FindObjectsByType<Button>(FindObjectsInactive.Include))
             AddButtonSounds(b);
     }
 
