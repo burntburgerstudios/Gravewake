@@ -19,5 +19,11 @@ MonoBehaviour:
     - PlatformGroup:
         m_String: Unknown
       m_SerializedParams: []
+    - PlatformGroup:
+        m_String: Standalone
+      m_SerializedParams: []
+    - PlatformGroup:
+        m_String: WebGL
+      m_SerializedParams: []
     CurrentParamsIndex: 0
   SuppressedDiagnostics: 
