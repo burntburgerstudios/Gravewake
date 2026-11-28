@@ -593,6 +593,9 @@ MonoBehaviour:
     - m_Text: Zone 3
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: Zone 4
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2013,6 +2016,7 @@ MonoBehaviour:
   - Zone1
   - Zone2
   - Zone3
+  - Zone4
   mainMenuScene: MainMenu
 --- !u!4 &1692584054
 Transform:

@@ -728,6 +728,112 @@ MonoBehaviour:
   maxSpeed: 5
   smoothing: 10
   turnSpeed: 360
+  move:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: Vector2
+    m_Id: ede2d309-f49a-4ea5-80bc-fd86091ef1ad
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2DVector
+      m_Id: ab29532b-9b5b-496c-9877-4dc6409d7fd8
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: Up
+      m_Id: 4e5657ce-15ab-4341-9a89-36053e00ecc4
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: Down
+      m_Id: dfa989ec-ff1f-4440-b446-b860626926e8
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: Left
+      m_Id: e6434105-1589-4e61-a1af-4e25a002e772
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: Right
+      m_Id: d2783d3e-4671-457d-962c-c60b6382a573
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: 2DVector
+      m_Id: b51bfd05-9e50-4c69-90ca-762124ba6941
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: Up
+      m_Id: 417a3f20-d6d3-4132-ab74-de0fbf22b7dc
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: Down
+      m_Id: 08780108-7a59-4468-b700-0bae34348fa7
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: Left
+      m_Id: 7d923e8f-60c4-48f0-b960-26d64b067eda
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: Right
+      m_Id: 810b73d7-a6d0-48e0-8fd5-a39a9801b494
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: 
+      m_Id: 60ae46b4-c1f1-4170-b0ab-921d8c3b24d7
+      m_Path: <Gamepad>/leftStick
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 0
+    - m_Name: 
+      m_Id: b136ccaa-0ec0-47a0-83d2-79fdf175f44d
+      m_Path: <Joystick>/stick
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
 --- !u!114 &145063108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,6 +859,42 @@ MonoBehaviour:
   muzzleDistance: 0.6
   shake: 0.15
   noiseRadius: 100
+  fire:
+    m_Name: Fire
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 8b670a7c-9ad2-4b48-a4bf-29e84904643e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 0b23762d-289d-4a05-b791-30913ec0ca05
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Fire
+      m_Flags: 0
+    m_Flags: 1
+    m_Priority: 0
+  reload:
+    m_Name: Reload
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: fc13b4a2-faca-4570-a5f1-ee68fd178feb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 75a93d9b-8635-4294-840d-48564e26d81e
+      m_Path: <Keyboard>/r
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Reload
+      m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
 --- !u!114 &145063109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,9 +922,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Flashlight
   sprite: {fileID: 145063103}
-  range: 25
-  innerAngle: 35
-  outerAngle: 75
+  range: 30
+  innerAngle: 50
+  outerAngle: 95
   intensity: 1.2
   color: {r: 1, g: 0.93, b: 0.75, a: 1}
   flicker: 0.05
@@ -2661,6 +2803,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuScene: MainMenu
+  menu:
+    m_Name: Menu
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 4221ffbd-5af8-4dc8-9a2e-df20f5f66a0a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 97bce8c1-74de-447a-8217-58946704e494
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Menu
+      m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
 --- !u!4 &952488418
 Transform:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed = 5f;
     public float smoothing = 10f;
     public float turnSpeed = 540f;
+    [SerializeField] InputAction move = DefaultMove();
 
     Rigidbody2D rb;
     Health health;
@@ -22,10 +24,30 @@ public class PlayerMovement : MonoBehaviour
         if (!TryGetComponent(out health)) health = gameObject.AddComponent<Health>();
     }
 
+    static InputAction DefaultMove()
+    {
+        var action = new InputAction("Move", InputActionType.Value, expectedControlType: "Vector2");
+        action.AddCompositeBinding("2DVector")
+            .With("Up", "<Keyboard>/w")
+            .With("Down", "<Keyboard>/s")
+            .With("Left", "<Keyboard>/a")
+            .With("Right", "<Keyboard>/d");
+        action.AddCompositeBinding("2DVector")
+            .With("Up", "<Keyboard>/upArrow")
+            .With("Down", "<Keyboard>/downArrow")
+            .With("Left", "<Keyboard>/leftArrow")
+            .With("Right", "<Keyboard>/rightArrow");
+        action.AddBinding("<Gamepad>/leftStick");
+        action.AddBinding("<Joystick>/stick");
+        return action;
+    }
+
+    void OnEnable() => move.Enable();
+    void OnDisable() => move.Disable();
+
     void Update()
     {
-        input = Vector2.ClampMagnitude(
-            new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")), 1f);
+        input = Vector2.ClampMagnitude(move.ReadValue<Vector2>(), 1f);
 
         if (input != Vector2.zero)
         {

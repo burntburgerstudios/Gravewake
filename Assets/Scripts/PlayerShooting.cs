@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class PlayerShooting : MonoBehaviour
     public float muzzleDistance = 0.6f;
     public float shake = 0.08f;
     public float noiseRadius = 25f;
+    // Initial state check: a trigger already held when the level loads still fires.
+    [SerializeField] InputAction fire =
+        new InputAction("Fire", InputActionType.Button, "<Keyboard>/space") { wantsInitialStateCheck = true };
+    [SerializeField] InputAction reload = new InputAction("Reload", InputActionType.Button, "<Keyboard>/r");
 
     Sprite square;
     Health health;
@@ -33,6 +38,18 @@ public class PlayerShooting : MonoBehaviour
         tex.SetPixel(0, 0, Color.white);
         tex.Apply();
         square = Sprite.Create(tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
+    }
+
+    void OnEnable()
+    {
+        fire.Enable();
+        reload.Enable();
+    }
+
+    void OnDisable()
+    {
+        fire.Disable();
+        reload.Disable();
     }
 
     void Start()
@@ -58,13 +75,13 @@ public class PlayerShooting : MonoBehaviour
         if (state == Gun.Clearing && Time.time >= busyUntil)
             state = Gun.Ready;
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (reload.WasPressedThisFrame())
         {
             if (state == Gun.Jammed) Begin(Gun.Clearing, jamClearTime);
             else if (state == Gun.Ready && ammo < magazine) Begin(Gun.Reloading, reloadTime);
         }
 
-        if (state != Gun.Ready || !Input.GetKey(KeyCode.Space) || Time.time < nextShot) return;
+        if (state != Gun.Ready || !fire.IsPressed() || Time.time < nextShot) return;
 
         if (ammo <= 0)
         {
